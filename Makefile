@@ -1,5 +1,5 @@
 all: src/libstring.c
-	gcc -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -g -pedantic
+	gcc -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -pedantic
 	ar rcs libstring.a libstring.o
 
 clean:
@@ -13,7 +13,7 @@ test: tests/runner.c clean all
 
 testv:
 	@echo "Running test with valgrind"
-	@valgrind tests/runner --track-origins=yes
+	@valgrind --track-origins=yes tests/runner 
 
 docs:
 	doxygen Doxyfile

@@ -75,6 +75,10 @@ string string_realloc(string a, uint16_t minS) {
 escape:
     /* reallocate string */
     ret = realloc(string_to_sr(a), sizeof(string_real) + sizeof(string_unit)*realS);
+    
+    /* clear the realloc'd memory */
+    memset(sr_to_string(ret), 0, realS - ret->tot);
+    
     /* change the total to reflect new size */
     ret->tot = realS;
     
