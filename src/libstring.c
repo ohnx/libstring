@@ -76,8 +76,8 @@ escape:
     /* reallocate string */
     ret = realloc(string_to_sr(a), sizeof(string_real) + sizeof(string_unit)*realS);
     
-    /* clear the realloc'd memory */
-    memset(sr_to_string(ret), 0, realS - ret->tot);
+    /* clear the realloc'd memory past the old string */
+    memset(sr_to_string(ret) + ret->len, 0, realS - ret->len);
     
     /* change the total to reflect new size */
     ret->tot = realS;
@@ -88,15 +88,18 @@ escape:
 
 
 /**
- * Copy string B to A with offset offset
+ * Copy num characters from string B to A with offset offset.
+ * 
+ * <b>if num is 0, then all characters will be copied.</b>
  * 
  * a string #1
  * b string #2
  * offset offset
+ * num number
  * 
  * @return the new string (guaranteed to be library-compatible string)
  */
-string string_copy(string a, const string b, uint16_t offset) {
+string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
     uint16_t aL, bL, rS;
     
     if (!is_sr(a)) {
@@ -104,7 +107,7 @@ string string_copy(string a, const string b, uint16_t offset) {
         
         /* get lengths */
         aL = strlen(a);
-        bL = strlen(b);
+        bL = num == 0 ? string_length(b) : num;
         
         /* find the final size required. first find length required 
          * 1) if length of a is greater than bL + offset, we just keep aL
@@ -132,12 +135,7 @@ string string_copy(string a, const string b, uint16_t offset) {
         aL = string_to_sr(a)->len;
         
         /* find length of b */
-        if (!is_sr(b))
-            /* no idea what the length is, use strlen */
-            bL = strlen(b);
-        else
-            /* we know how long the string is */
-            bL = string_to_sr(b)->len;
+        bL = num == 0 ? string_length(b) : num;
         
         /* find the final size required. first find length required 
          * 1) if length of a is greater than bL + offset, we just keep aL
@@ -155,7 +153,7 @@ string string_copy(string a, const string b, uint16_t offset) {
         
         /* guarantee that there is enough room now, can copy string over */
         memcpy(a+offset, b, sizeof(string_unit)*bL);
-        
+
         return a;
     }
 }
@@ -201,24 +199,4 @@ string string_dup(string a) {
     }
     
     return sr_to_string(ret);
-}
-
-/**
- * Append two strings
- * 
- * a string #1
- * b string #2
- * 
- * @return the appended string a+b (guaranteed to be library-compatible string)
- */
-string string_append(string a, string b) {
-    uint16_t aL;
-    
-    /* append is just copying to the end of the string A */
-    if (!is_sr(a))
-        aL = strlen(a);
-    else
-        aL = string_to_sr(a)->len;
-    
-    return string_copy(a, b, aL);
 }

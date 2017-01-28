@@ -1,5 +1,5 @@
 all: src/libstring.c
-	gcc -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -pedantic
+	gcc -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -pedantic -g
 	ar rcs libstring.a libstring.o
 
 clean:

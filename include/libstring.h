@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include <stdio.h>
 
 /**
  * The "unit" of each string
@@ -57,7 +56,7 @@ typedef string_unit* string;
  * library functions is library-compatible string or not (ie, it has the header
  * that gives some extra information about it)
  */
-#define SR_MAGIC_NUMBER 122
+#define SR_MAGIC_NUMBER 1
 
 /**
  * Convert from a string to the string_real header
@@ -75,19 +74,31 @@ typedef string_unit* string;
  */
 #define is_sr(x) (((string_real *)((unsigned char *)x - sizeof(string_real)))->flg == SR_MAGIC_NUMBER)
 
-string string_new();
-string string_new_size(uint16_t size);
-string string_realloc(string a, uint16_t minS);
-string string_copy(string a, const string b, uint16_t offset);
-string string_dup(string a);
-string string_append(string a, string b);
 /**
  * Get the length of a string
  */
-#define string_length(x) string_to_sr(x)->len
+#define string_length(x) is_sr(x) ? string_to_sr(x)->len : strlen(x)
+
 /**
  * Free a string
  */
 #define string_free(x) free(string_to_sr(x))
+
+string string_new();
+string string_new_size(uint16_t size);
+string string_realloc(string a, uint16_t minS);
+string string_copy(string a, const string b, uint16_t offset, uint16_t num);
+string string_dup(string a);
+string string_append(string a, string b);
+
+/**
+ * Append two strings (aka copy characters from b to the end of a)
+ * 
+ * a string #1
+ * b string #2
+ * 
+ * @return the appended string a+b (guaranteed to be library-compatible string)
+ */
+#define string_append(a, b) string_copy(a, b, string_length(a), 0)
 
 #endif

@@ -17,11 +17,18 @@ int main() {
     printf("s1(%p):%s\n", myString, myString);
     printf("s2(%p):%s\n", myStringTwo, myStringTwo);
     
-    myString = string_copy(myString, "Steve", 24);
+    myString = string_copy(myString, "Steve", 24, 0);
     
     printf("First string is named Steve now, Second string unchanged\n");
     printf("s1(%p):%s\n", myString, myString);
     printf("s2(%p):%s\n", myStringTwo, myStringTwo);
+
+    string_free(myString);
+    myString = string_new();
+    myString = string_copy(myString, "completely different... Cheeseburgers!", 0, 20);
+    
+    printf("Re-using first string!\n");
+    printf("s1_new(%p):%s\n", myString, myString);
 
     string_free(myString);
     string_free(myStringTwo);
