@@ -90,5 +90,4 @@ string string_append(string a, string b);
  */
 #define string_free(x) free(string_to_sr(x))
 
-void hexDump (char *desc, void *addr, int len);
 #endif
