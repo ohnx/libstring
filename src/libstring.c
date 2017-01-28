@@ -19,9 +19,9 @@
  * Allocation sizes by default <br />
  * Each one is ~double the previous one
  * 
- * The -1 just means "Screw it"
+ * The 0 just means "Screw it"
  */
-uint16_t allocS[] = {16, 32, 64, 256, 512, 1024, 2048, 4096, 8192, 12288, -1};
+uint16_t allocS[] = {16, 32, 64, 256, 512, 1024, 2048, 4096, 8192, 12288, 0};
 
 /**
  * Create a new string
@@ -32,19 +32,6 @@ string string_new() {
     string_real *sr = calloc(sizeof(string_real) + allocS[0], 1);
     sr->len = 0;
     sr->tot = allocS[0];
-    sr->flg = SR_MAGIC_NUMBER;
-    return sr_to_string(sr);
-}
-
-/**
- * Create a new string with a given size
- * 
- * @return pointer to the new string
- */
-string string_new_size(uint16_t size) {
-    string_real *sr = calloc(sizeof(string_real) + sizeof(string_unit)*size, 1);
-    sr->len = 0;
-    sr->tot = size;
     sr->flg = SR_MAGIC_NUMBER;
     return sr_to_string(sr);
 }
@@ -65,7 +52,7 @@ string string_realloc(string a, uint16_t minS) {
     /* loop through all the lengths */
     for (i = 0; allocS[i] < minS; i++) {
         realS = allocS[i];
-        if (realS == -1) {
+        if (realS == 0) {
             realS = minS;
             goto escape;
         }
@@ -73,11 +60,18 @@ string string_realloc(string a, uint16_t minS) {
     realS = allocS[i];
     
 escape:
-    /* reallocate string */
-    ret = realloc(string_to_sr(a), sizeof(string_real) + sizeof(string_unit)*realS);
-    
-    /* clear the realloc'd memory past the old string */
-    memset(sr_to_string(ret) + ret->len, 0, realS - ret->len);
+    if (a) {/* reallocate string */
+        ret = realloc(string_to_sr(a), sizeof(string_real) + sizeof(string_unit)*realS);
+        
+        /* clear the realloc'd memory past the old string */
+        memset(sr_to_string(ret) + ret->len, 0, realS - ret->len);
+    } else {/* newly allocate the string */
+        ret = calloc(sizeof(string_real) + sizeof(string_unit)*realS, 1);
+        
+        /* set the magic flag */
+        ret->flg = SR_MAGIC_NUMBER;
+        ret->len = 0;
+    }
     
     /* change the total to reflect new size */
     ret->tot = realS;
@@ -167,31 +161,17 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
  */
 string string_dup(string a) {
     string_real *ret;
-    uint16_t aS, realS;
-    unsigned int i = 0;
-    
+    uint16_t aS;
+
+    aS = string_length(a) + 1;
+
     if (!is_sr(a)) {
-        aS = strlen(a) + 1; /* +1 for null terminator */
-        
-        /* loop through all the lengths */
-        for (i = 0; allocS[i] < aS; i++) {
-            realS = allocS[i];
-            if (realS == -1) {
-                realS = aS;
-                goto escape;
-            }
-        }
-        realS = allocS[i];
-            
-    escape:
-        ret = string_to_sr(string_new_size(realS));
+        ret = string_to_sr(string_new_size(aS));
         ret->len = aS - 1; /* minus 1 to convert from size to length */
 
         /* can only copy to the string portion */
         memcpy(sr_to_string(ret), a, sizeof(string_unit)*aS);
     } else {
-        aS = string_to_sr(a)->len + 1;
-        
         ret = string_to_sr(string_new_size(aS));
         
         /* we can copy everything, even the header */

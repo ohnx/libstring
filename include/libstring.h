@@ -85,11 +85,9 @@ typedef string_unit* string;
 #define string_free(x) free(string_to_sr(x))
 
 string string_new();
-string string_new_size(uint16_t size);
 string string_realloc(string a, uint16_t minS);
 string string_copy(string a, const string b, uint16_t offset, uint16_t num);
 string string_dup(string a);
-string string_append(string a, string b);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)
@@ -100,5 +98,13 @@ string string_append(string a, string b);
  * @return the appended string a+b (guaranteed to be library-compatible string)
  */
 #define string_append(a, b) string_copy(a, b, string_length(a), 0)
+
+/**
+ * Create a new string with a minimum given size
+ * 
+ * @return pointer to the new string
+ */
+#define string_new_size(x) string_realloc(NULL, x)
+
 
 #endif
