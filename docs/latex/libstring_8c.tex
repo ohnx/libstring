@@ -1,0 +1,101 @@
+\hypertarget{libstring_8c}{\section{src/libstring.c File Reference}
+\label{libstring_8c}\index{src/libstring.\-c@{src/libstring.\-c}}
+}
+
+
+All functions in libstring.  
+
+
+{\ttfamily \#include \char`\"{}libstring.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a8d899f4982b32b605b705f6e0599740a}{string\-\_\-new} ()
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{string\-\_\-realloc} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a, uint16\-\_\-t min\-S)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{string\-\_\-copy} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a, const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} b, uint16\-\_\-t offset, uint16\-\_\-t num)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a79031db7f488862b8ea5296a29a566c7}{string\-\_\-dup} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{libstring_8c_a339925d5310c36af6504e01142417bb5}{alloc\-S} \mbox{[}$\,$\mbox{]} = \{16, 32, 64, 256, 512, 1024, 2048, 4096, 8192, 12288, 0\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All functions in libstring. 
+
+\subsection{Function Documentation}
+\hypertarget{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-copy@{string\-\_\-copy}}
+\index{string\-\_\-copy@{string\-\_\-copy}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-copy (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{a, }
+\item[{const {\bf string}}]{b, }
+\item[{uint16\-\_\-t}]{offset, }
+\item[{uint16\-\_\-t}]{num}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}
+Copy num characters from string B to A with offset offset.
+
+{\bfseries if num is 0, then all characters will be copied.}
+
+a string \#1 b string \#2 offset offset num number
+
+\begin{DoxyReturn}{Returns}
+the new string (guaranteed to be library-\/compatible string) 
+\end{DoxyReturn}
+\hypertarget{libstring_8c_a79031db7f488862b8ea5296a29a566c7}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-dup@{string\-\_\-dup}}
+\index{string\-\_\-dup@{string\-\_\-dup}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-dup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-dup (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{a}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_a79031db7f488862b8ea5296a29a566c7}
+Make a duplicate of a string
+
+a string
+
+\begin{DoxyReturn}{Returns}
+the copy of the string (guaranteed to be library-\/compatible string) 
+\end{DoxyReturn}
+\hypertarget{libstring_8c_a8d899f4982b32b605b705f6e0599740a}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-new@{string\-\_\-new}}
+\index{string\-\_\-new@{string\-\_\-new}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-new (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_a8d899f4982b32b605b705f6e0599740a}
+Create a new string
+
+\begin{DoxyReturn}{Returns}
+pointer to the new string 
+\end{DoxyReturn}
+\hypertarget{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-realloc@{string\-\_\-realloc}}
+\index{string\-\_\-realloc@{string\-\_\-realloc}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-realloc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-realloc (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{a, }
+\item[{uint16\-\_\-t}]{min\-S}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}
+Reallocate string A with minimum size
+
+a the string to reallocate min\-S the minimum size of the string
+
+\begin{DoxyReturn}{Returns}
+pointer to the new string 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{libstring_8c_a339925d5310c36af6504e01142417bb5}{\index{libstring.\-c@{libstring.\-c}!alloc\-S@{alloc\-S}}
+\index{alloc\-S@{alloc\-S}!libstring.c@{libstring.\-c}}
+\subsubsection[{alloc\-S}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t alloc\-S\mbox{[}$\,$\mbox{]} = \{16, 32, 64, 256, 512, 1024, 2048, 4096, 8192, 12288, 0\}}}\label{libstring_8c_a339925d5310c36af6504e01142417bb5}
+Allocation sizes by default \par
+ Each one is $\sim$double the previous one
+
+The 0 just means \char`\"{}\-Screw it\char`\"{} 

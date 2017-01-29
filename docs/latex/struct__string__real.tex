@@ -1,0 +1,50 @@
+\hypertarget{struct__string__real}{\section{\-\_\-string\-\_\-real Struct Reference}
+\label{struct__string__real}\index{\-\_\-string\-\_\-real@{\-\_\-string\-\_\-real}}
+}
+
+
+{\ttfamily \#include $<$libstring.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{struct__string__real_a4c51041b496d561d8ea8c8af4aa34ea5}{len}
+\item 
+uint16\-\_\-t \hyperlink{struct__string__real_a0a2aeea98f557b0e98e15aa42414e855}{tot}
+\item 
+unsigned char \hyperlink{struct__string__real_ac23d3f9fe5d59437dece0bc99488ef85}{flg}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main string type used by the library
+
+Most of the time, the user interacts only with the \char`\"{}string\char`\"{}. Internally, however, this is how strings are represented.
+
+The value of the string itself follows after this small header. That is the memory address returned by a function.
+
+I\-M\-P\-O\-R\-T\-A\-N\-T D\-I\-S\-A\-M\-B\-I\-B\-U\-A\-T\-I\-O\-N\-:
+
+
+\begin{DoxyItemize}
+\item size = size in memory
+\item length = the length of the string (not including null terminator)
+\end{DoxyItemize}
+
+\hyperlink{struct__string__real_a4c51041b496d561d8ea8c8af4aa34ea5}{string\-\_\-real.\-len} is a length! \hyperlink{struct__string__real_a0a2aeea98f557b0e98e15aa42414e855}{string\-\_\-real.\-tot} is a size! 
+
+\subsection{Field Documentation}
+\hypertarget{struct__string__real_ac23d3f9fe5d59437dece0bc99488ef85}{\index{\-\_\-string\-\_\-real@{\-\_\-string\-\_\-real}!flg@{flg}}
+\index{flg@{flg}!_string_real@{\-\_\-string\-\_\-real}}
+\subsubsection[{flg}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char \-\_\-string\-\_\-real\-::flg}}\label{struct__string__real_ac23d3f9fe5d59437dece0bc99488ef85}
+flag telling that this is a string \hypertarget{struct__string__real_a4c51041b496d561d8ea8c8af4aa34ea5}{\index{\-\_\-string\-\_\-real@{\-\_\-string\-\_\-real}!len@{len}}
+\index{len@{len}!_string_real@{\-\_\-string\-\_\-real}}
+\subsubsection[{len}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-\_\-string\-\_\-real\-::len}}\label{struct__string__real_a4c51041b496d561d8ea8c8af4aa34ea5}
+length of the string \hypertarget{struct__string__real_a0a2aeea98f557b0e98e15aa42414e855}{\index{\-\_\-string\-\_\-real@{\-\_\-string\-\_\-real}!tot@{tot}}
+\index{tot@{tot}!_string_real@{\-\_\-string\-\_\-real}}
+\subsubsection[{tot}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-\_\-string\-\_\-real\-::tot}}\label{struct__string__real_a0a2aeea98f557b0e98e15aa42414e855}
+total amount of memory allocated to the string 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{libstring_8h}{libstring.\-h}\end{DoxyCompactItemize}
