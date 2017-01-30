@@ -87,7 +87,7 @@ typedef string_unit* string;
 string string_new();
 string string_realloc(string a, uint16_t minS);
 string string_copy(string a, const string b, uint16_t offset, uint16_t num);
-string string_dup(string a);
+string string_dup(const string a);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)

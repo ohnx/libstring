@@ -159,7 +159,7 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
  * 
  * @return the copy of the string (guaranteed to be library-compatible string)
  */
-string string_dup(string a) {
+string string_dup(const string a) {
     string_real *ret;
     uint16_t aS;
 
