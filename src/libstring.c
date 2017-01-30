@@ -229,7 +229,7 @@ string string_printf(const char *fmt, ...) {
  * 
  * @return the pointer to the string
  */
-inline string string_temporary(string in) {
+string string_temporary(string in) {
     /* we use an interesting hack here... assignment always returns what we
     assigned, so if we do some pointer arithmetic on it, we can get this macro
     to evaluate to the pointer passed in */
