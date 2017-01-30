@@ -29,12 +29,12 @@ int main() {
     
     printf("Re-using first string!\n");
     printf("s1_new(%p):%s\n", myString, myString);
-    
-    string sprintf_test = string_printf("My numbers are %d, %d, and %d.\n", 10, 30, 21);
-    printf("%s", sprintf_test);
+
+    string autofree_test = string_append("My numbers are ", string_temporary(string_printf("%d, %d, and %d.\n", 10, 30, 21)));
+    printf("printf and autofree test:\n%s", autofree_test);
 
     string_free(myString);
     string_free(myStringTwo);
-    string_free(sprintf_test);
+    string_free(autofree_test);
     return 0;
 }

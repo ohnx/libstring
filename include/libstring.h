@@ -45,6 +45,8 @@ typedef struct _string_real {
     uint16_t        len;
     /** total amount of memory allocated to the string */
     uint16_t        tot;
+    /** flag telling if this string should be free'd after use */
+    unsigned char   tmp;
     /** flag telling that this is a string */
     unsigned char   flg;
     /* string itself follows... */
@@ -91,6 +93,7 @@ string string_realloc(string a, uint16_t minS);
 string string_copy(string a, const string b, uint16_t offset, uint16_t num);
 string string_dup(const string a);
 string string_printf(const char *fmt, ...);
+inline string string_temporary(string in);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)
@@ -109,5 +112,11 @@ string string_printf(const char *fmt, ...);
  */
 #define string_new_size(x) string_realloc(NULL, x)
 
+/**
+ * Check if a string is temporary or not
+ * 
+ * @return t/f
+ */
+#define string_istemporary(x) (is_sr(x)?(string_to_sr(x)->tmp == 1):0)
 
 #endif

@@ -32,6 +32,7 @@ string string_new() {
     string_real *sr = calloc(sizeof(string_real) + allocS[0], 1);
     sr->len = 0;
     sr->tot = allocS[0];
+    sr->tmp = 0;
     sr->flg = SR_MAGIC_NUMBER;
     return sr_to_string(sr);
 }
@@ -69,6 +70,7 @@ escape:
         ret = calloc(sizeof(string_real) + sizeof(string_unit)*realS, 1);
         
         /* set the magic flag */
+        ret->tmp = 0;
         ret->flg = SR_MAGIC_NUMBER;
         ret->len = 0;
     }
@@ -123,6 +125,8 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
         /* copy the second string to where it should be */
         memcpy(ret+offset, b, sizeof(string_unit)*bL);
         
+        /* check if string should be freed */
+        if (string_istemporary(b)) string_free(b);
         return ret;
     } else {
         /* we know that a is for sure a valid string */
@@ -148,6 +152,8 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
         /* guarantee that there is enough room now, can copy string over */
         memcpy(a+offset, b, sizeof(string_unit)*bL);
 
+        /* check if string should be freed */
+        if (string_istemporary(b)) string_free(b);
         return a;
     }
 }
@@ -178,6 +184,8 @@ string string_dup(const string a) {
         memcpy(ret, string_to_sr(a), sizeof(string_real) + sizeof(string_unit)*aS);
     }
     
+    /* check if string should be freed */
+    if (string_istemporary(a)) string_free(a);
     return sr_to_string(ret);
 }
 
@@ -212,4 +220,18 @@ string string_printf(const char *fmt, ...) {
     
     /* done */
     return a;
+}
+
+/**
+ * Declare a string as temporary, ie, that it will be freed right after use
+ * 
+ * If the string is not library-compatible, nothing happens.
+ * 
+ * @return the pointer to the string
+ */
+inline string string_temporary(string in) {
+    /* we use an interesting hack here... assignment always returns what we
+    assigned, so if we do some pointer arithmetic on it, we can get this macro
+    to evaluate to the pointer passed in */
+    return is_sr(in)?(in + (string_to_sr(in)->tmp = 1) - 1):in;
 }
