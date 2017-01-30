@@ -16,7 +16,11 @@ All functions in libstring.
 \item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{string\-\_\-copy} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a, const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} b, uint16\-\_\-t offset, uint16\-\_\-t num)
 \item 
-\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a79031db7f488862b8ea5296a29a566c7}{string\-\_\-dup} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a4b2487f7f12b4efc4cfe08fb8668f741}{string\-\_\-dup} (const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a735702eafd2e58bac869b7a280f5b268}{string\-\_\-printf} (const char $\ast$fmt,...)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}{string\-\_\-temporary} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} in)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -48,13 +52,13 @@ a string \#1 b string \#2 offset offset num number
 \begin{DoxyReturn}{Returns}
 the new string (guaranteed to be library-\/compatible string) 
 \end{DoxyReturn}
-\hypertarget{libstring_8c_a79031db7f488862b8ea5296a29a566c7}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-dup@{string\-\_\-dup}}
+\hypertarget{libstring_8c_a4b2487f7f12b4efc4cfe08fb8668f741}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-dup@{string\-\_\-dup}}
 \index{string\-\_\-dup@{string\-\_\-dup}!libstring.c@{libstring.\-c}}
 \subsubsection[{string\-\_\-dup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-dup (
 \begin{DoxyParamCaption}
-\item[{{\bf string}}]{a}
+\item[{const {\bf string}}]{a}
 \end{DoxyParamCaption}
-)}}\label{libstring_8c_a79031db7f488862b8ea5296a29a566c7}
+)}}\label{libstring_8c_a4b2487f7f12b4efc4cfe08fb8668f741}
 Make a duplicate of a string
 
 a string
@@ -74,6 +78,21 @@ Create a new string
 \begin{DoxyReturn}{Returns}
 pointer to the new string 
 \end{DoxyReturn}
+\hypertarget{libstring_8c_a735702eafd2e58bac869b7a280f5b268}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-printf@{string\-\_\-printf}}
+\index{string\-\_\-printf@{string\-\_\-printf}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-printf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-printf (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_a735702eafd2e58bac869b7a280f5b268}
+sprintf
+
+Give it exactly what you'd give printf
+
+\begin{DoxyReturn}{Returns}
+a pointer to a library-\/compatible string 
+\end{DoxyReturn}
 \hypertarget{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-realloc@{string\-\_\-realloc}}
 \index{string\-\_\-realloc@{string\-\_\-realloc}!libstring.c@{libstring.\-c}}
 \subsubsection[{string\-\_\-realloc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-realloc (
@@ -88,6 +107,20 @@ a the string to reallocate min\-S the minimum size of the string
 
 \begin{DoxyReturn}{Returns}
 pointer to the new string 
+\end{DoxyReturn}
+\hypertarget{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-temporary@{string\-\_\-temporary}}
+\index{string\-\_\-temporary@{string\-\_\-temporary}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-temporary}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-temporary (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}
+Declare a string as temporary, ie, that it will be freed right after use
+
+If the string is not library-\/compatible, nothing happens.
+
+\begin{DoxyReturn}{Returns}
+the pointer to the string 
 \end{DoxyReturn}
 
 
