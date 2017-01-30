@@ -82,7 +82,7 @@ typedef string_unit* string;
 /**
  * Free a string
  */
-#define string_free(x) free(string_to_sr(x))
+#define string_free(x) free(is_sr(x)?(void *)string_to_sr(x):(void *)x)
 
 string string_new();
 string string_realloc(string a, uint16_t minS);
