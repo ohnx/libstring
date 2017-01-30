@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
  * The "unit" of each string
@@ -88,6 +90,7 @@ string string_new();
 string string_realloc(string a, uint16_t minS);
 string string_copy(string a, const string b, uint16_t offset, uint16_t num);
 string string_dup(const string a);
+string string_printf(const char *fmt, ...);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)

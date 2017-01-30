@@ -29,8 +29,12 @@ int main() {
     
     printf("Re-using first string!\n");
     printf("s1_new(%p):%s\n", myString, myString);
+    
+    string sprintf_test = string_printf("My numbers are %d, %d, and %d.\n", 10, 30, 21);
+    printf("%s", sprintf_test);
 
     string_free(myString);
     string_free(myStringTwo);
+    string_free(sprintf_test);
     return 0;
 }
