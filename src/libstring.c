@@ -199,7 +199,7 @@ string string_dup(const string a) {
 string string_printf(const char *fmt, ...) {
     va_list in, copy;
     string a = NULL;
-    int length;
+    int size;
     
     /* start the main input */
     va_start(in, fmt);
@@ -207,15 +207,15 @@ string string_printf(const char *fmt, ...) {
     va_copy(copy, in);
     
     /* run vsnprintf just to see how much bytes needed */
-    length = vsnprintf(a, 0, fmt, copy) + 1;
+    size = vsnprintf(a, 0, fmt, copy) + 1;
     va_end(copy);
     
     /* allocate the amount now */
-    a = string_new_size(length + 1);
-    string_to_sr(a)->len = length;
+    a = string_new_size(size);
+    string_to_sr(a)->len = size - 1;
     
     /* re-run */
-    vsnprintf(a, length, fmt, in);
+    vsnprintf(a, size, fmt, in);
     va_end(in);
     
     /* done */
