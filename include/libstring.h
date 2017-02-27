@@ -17,10 +17,25 @@
 #define string_unit
 
 #ifdef USE_UNICODE
+#undef string_unit
+#define string_unit uint8_t
+
 #error I have no idea how to implement unicode, but this library should be unicode-safe if you change string_unit
+int utf8_strlen(const string_unit *str);
+
+/**
+ * Internal use strlen
+ */
+#define _strlen(x) strlen(x)
 #else
+
 #undef string_unit
 #define string_unit char
+
+/**
+ * Internal use strlen
+ */
+#define _strlen(x) strlen(x)
 #endif
 
 /**
@@ -32,7 +47,7 @@
  * The value of the string itself follows after this small header.
  * That is the memory address returned by a function.
  * 
- * IMPORTANT DISAMBIBUATION:
+ * IMPORTANT DISAMBIGUATION:
  * 
  * * size = size in memory
  * * length = the length of the string (not including null terminator)
@@ -81,7 +96,7 @@ typedef string_unit* string;
 /**
  * Get the length of a string
  */
-#define string_length(x) is_sr(x) ? string_to_sr(x)->len : strlen(x)
+#define string_length(x) is_sr(x) ? string_to_sr(x)->len : _strlen(x)
 
 /**
  * Free a string
@@ -94,6 +109,7 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num);
 string string_dup(const string a);
 string string_printf(const char *fmt, ...);
 string string_temporary(string in);
+string string_mknew(const string_unit *in);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)
