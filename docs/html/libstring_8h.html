@@ -115,6 +115,8 @@ Macros</h2></td></tr>
 <tr class="separator:a7f60ab0ef81ddb22d1ef751ed974eeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f60ab0ef81ddb22d1ef751ed974eeda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a7f60ab0ef81ddb22d1ef751ed974eeda">string_unit</a>&#160;&#160;&#160;char</td></tr>
 <tr class="separator:a7f60ab0ef81ddb22d1ef751ed974eeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a990396c8df1570b65738f484c5a67b7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a990396c8df1570b65738f484c5a67b7a">_strlen</a>(x)&#160;&#160;&#160;strlen(x)</td></tr>
+<tr class="separator:a990396c8df1570b65738f484c5a67b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89cf6de7d0bdc9f360c7813f8979339e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a89cf6de7d0bdc9f360c7813f8979339e">SR_MAGIC_NUMBER</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a89cf6de7d0bdc9f360c7813f8979339e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19b025d38c6475e913a6fd6e21390af2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)&#160;&#160;&#160;((<a class="el" href="libstring_8h.html#a64ea07e8749ed647ff39561e84eb5895">string_real</a> *)((unsigned char *)x - sizeof(<a class="el" href="libstring_8h.html#a64ea07e8749ed647ff39561e84eb5895">string_real</a>)))</td></tr>
@@ -123,13 +125,13 @@ Macros</h2></td></tr>
 <tr class="separator:abbe99f12f8f6519cde75ed7f21a3b2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aada14177166a42820bf376ac0a4a16a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x)&#160;&#160;&#160;(((<a class="el" href="libstring_8h.html#a64ea07e8749ed647ff39561e84eb5895">string_real</a> *)((unsigned char *)x - sizeof(<a class="el" href="libstring_8h.html#a64ea07e8749ed647ff39561e84eb5895">string_real</a>)))-&gt;flg == <a class="el" href="libstring_8h.html#a89cf6de7d0bdc9f360c7813f8979339e">SR_MAGIC_NUMBER</a>)</td></tr>
 <tr class="separator:aada14177166a42820bf376ac0a4a16a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcf00c98251679a3911ada75d158785a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(x)&#160;&#160;&#160;<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x) ? <a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)-&gt;len : strlen(x)</td></tr>
+<tr class="memitem:adcf00c98251679a3911ada75d158785a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(x)&#160;&#160;&#160;<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x) ? <a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)-&gt;len : <a class="el" href="libstring_8h.html#a990396c8df1570b65738f484c5a67b7a">_strlen</a>(x)</td></tr>
 <tr class="separator:adcf00c98251679a3911ada75d158785a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a127f2cd5454d5795a7a76f0120760b61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a127f2cd5454d5795a7a76f0120760b61">string_free</a>(x)&#160;&#160;&#160;free(<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x)?(void *)<a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x):(void *)x)</td></tr>
 <tr class="separator:a127f2cd5454d5795a7a76f0120760b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a934a85f5fdd0a5525b1b9ab838f06ff0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0">string_append</a>(a, b)&#160;&#160;&#160;<a class="el" href="libstring_8c.html#af800fb56ff534a5f5f0a6ce46e8dea8c">string_copy</a>(a, b, <a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(a), 0)</td></tr>
+<tr class="memitem:a934a85f5fdd0a5525b1b9ab838f06ff0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0">string_append</a>(a, b)&#160;&#160;&#160;<a class="el" href="libstring_8h.html#af800fb56ff534a5f5f0a6ce46e8dea8c">string_copy</a>(a, b, <a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(a), 0)</td></tr>
 <tr class="separator:a934a85f5fdd0a5525b1b9ab838f06ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ef4d1ebdc1576f6d8b15ff923d317ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a0ef4d1ebdc1576f6d8b15ff923d317ad">string_new_size</a>(x)&#160;&#160;&#160;<a class="el" href="libstring_8c.html#a73531e043cd4a13eeee32886f0acbaae">string_realloc</a>(NULL, x)</td></tr>
+<tr class="memitem:a0ef4d1ebdc1576f6d8b15ff923d317ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a0ef4d1ebdc1576f6d8b15ff923d317ad">string_new_size</a>(x)&#160;&#160;&#160;<a class="el" href="libstring_8h.html#a73531e043cd4a13eeee32886f0acbaae">string_realloc</a>(NULL, x)</td></tr>
 <tr class="separator:a0ef4d1ebdc1576f6d8b15ff923d317ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affda8fa39867a1db0f820339d802382d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#affda8fa39867a1db0f820339d802382d">string_istemporary</a>(x)&#160;&#160;&#160;(<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x)?(<a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)-&gt;tmp == 1):0)</td></tr>
 <tr class="separator:affda8fa39867a1db0f820339d802382d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,14 +153,31 @@ Functions</h2></td></tr>
 <tr class="separator:af800fb56ff534a5f5f0a6ce46e8dea8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2487f7f12b4efc4cfe08fb8668f741"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a4b2487f7f12b4efc4cfe08fb8668f741">string_dup</a> (const <a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> a)</td></tr>
 <tr class="separator:a4b2487f7f12b4efc4cfe08fb8668f741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a735702eafd2e58bac869b7a280f5b268"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#a735702eafd2e58bac869b7a280f5b268">string_printf</a> (const char *fmt,...)</td></tr>
-<tr class="separator:a735702eafd2e58bac869b7a280f5b268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa60eeb5a0eeb51ae5836f067e332a97c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#aa60eeb5a0eeb51ae5836f067e332a97c">string_temporary</a> (<a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> in)</td></tr>
 <tr class="separator:aa60eeb5a0eeb51ae5836f067e332a97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d3860e4259587644103dd264138e43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring_8h.html#ad8d3860e4259587644103dd264138e43">string_mknew</a> (const <a class="el" href="libstring_8h.html#a7f60ab0ef81ddb22d1ef751ed974eeda">string_unit</a> *in)</td></tr>
+<tr class="separator:ad8d3860e4259587644103dd264138e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for libstring. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a990396c8df1570b65738f484c5a67b7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _strlen</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;strlen(x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Internal use strlen </p>
+
+</div>
+</div>
 <a class="anchor" id="aada14177166a42820bf376ac0a4a16a5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +244,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="libstring_8c.html#af800fb56ff534a5f5f0a6ce46e8dea8c">string_copy</a>(a, b, <a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(a), 0)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="libstring_8h.html#af800fb56ff534a5f5f0a6ce46e8dea8c">string_copy</a>(a, b, <a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">string_length</a>(a), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -279,7 +298,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x) ? <a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)-&gt;len : strlen(x)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">is_sr</a>(x) ? <a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">string_to_sr</a>(x)-&gt;len : <a class="el" href="libstring_8h.html#a990396c8df1570b65738f484c5a67b7a">_strlen</a>(x)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -296,7 +315,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="libstring_8c.html#a73531e043cd4a13eeee32886f0acbaae">string_realloc</a>(NULL, x)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="libstring_8h.html#a73531e043cd4a13eeee32886f0acbaae">string_realloc</a>(NULL, x)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -374,7 +393,7 @@ Functions</h2></td></tr>
 <p>Main string type used by the library</p>
 <p>Most of the time, the user interacts only with the "string". Internally, however, this is how strings are represented.</p>
 <p>The value of the string itself follows after this small header. That is the memory address returned by a function.</p>
-<p>IMPORTANT DISAMBIBUATION:</p>
+<p>IMPORTANT DISAMBIGUATION:</p>
 <ul>
 <li>size = size in memory</li>
 <li>length = the length of the string (not including null terminator)</li>
@@ -445,6 +464,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad8d3860e4259587644103dd264138e43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> string_mknew </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="libstring_8h.html#a7f60ab0ef81ddb22d1ef751ed974eeda">string_unit</a> *&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Duplicate a non-library string</p>
+<p>Use this function if you are concerned about reads before the string </p>
+
+</div>
+</div>
 <a class="anchor" id="a8d899f4982b32b605b705f6e0599740a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -459,35 +496,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Create a new string</p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the new string </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a735702eafd2e58bac869b7a280f5b268"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> string_printf </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fmt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>sprintf</p>
-<p>Give it exactly what you'd give printf</p>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to a library-compatible string </dd></dl>
 
 </div>
 </div>
@@ -523,9 +531,6 @@ Functions</h2></td></tr>
 <a class="anchor" id="aa60eeb5a0eeb51ae5836f067e332a97c"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> string_temporary </td>
@@ -535,11 +540,6 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Declare a string as temporary, ie, that it will be freed right after use</p>
 <p>If the string is not library-compatible, nothing happens.</p>
@@ -550,7 +550,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 30 2017 20:36:58 for libstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Feb 28 2017 02:36:42 for libstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

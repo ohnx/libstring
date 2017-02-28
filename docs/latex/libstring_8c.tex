@@ -12,15 +12,17 @@ All functions in libstring.
 \item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a8d899f4982b32b605b705f6e0599740a}{string\-\_\-new} ()
 \item 
+uint16\-\_\-t \hyperlink{libstring_8c_aa04e472d48457a1a4b64c19b7eaa8572}{string\-\_\-bavail} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
+\item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{string\-\_\-realloc} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a, uint16\-\_\-t min\-S)
 \item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{string\-\_\-copy} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a, const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} b, uint16\-\_\-t offset, uint16\-\_\-t num)
 \item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a4b2487f7f12b4efc4cfe08fb8668f741}{string\-\_\-dup} (const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
 \item 
-\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_a735702eafd2e58bac869b7a280f5b268}{string\-\_\-printf} (const char $\ast$fmt,...)
-\item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}{string\-\_\-temporary} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} in)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8c_ad8d3860e4259587644103dd264138e43}{string\-\_\-mknew} (const \hyperlink{libstring_8h_a7f60ab0ef81ddb22d1ef751ed974eeda}{string\-\_\-unit} $\ast$in)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -33,6 +35,18 @@ uint16\-\_\-t \hyperlink{libstring_8c_a339925d5310c36af6504e01142417bb5}{alloc\-
 All functions in libstring. 
 
 \subsection{Function Documentation}
+\hypertarget{libstring_8c_aa04e472d48457a1a4b64c19b7eaa8572}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-bavail@{string\-\_\-bavail}}
+\index{string\-\_\-bavail@{string\-\_\-bavail}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-bavail}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t string\-\_\-bavail (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{a}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_aa04e472d48457a1a4b64c19b7eaa8572}
+Get the number of bytes available in the string
+
+\begin{DoxyReturn}{Returns}
+the number of bytes available 
+\end{DoxyReturn}
 \hypertarget{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-copy@{string\-\_\-copy}}
 \index{string\-\_\-copy@{string\-\_\-copy}!libstring.c@{libstring.\-c}}
 \subsubsection[{string\-\_\-copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-copy (
@@ -66,7 +80,16 @@ a string
 \begin{DoxyReturn}{Returns}
 the copy of the string (guaranteed to be library-\/compatible string) 
 \end{DoxyReturn}
-\hypertarget{libstring_8c_a8d899f4982b32b605b705f6e0599740a}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-new@{string\-\_\-new}}
+\hypertarget{libstring_8c_ad8d3860e4259587644103dd264138e43}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-mknew@{string\-\_\-mknew}}
+\index{string\-\_\-mknew@{string\-\_\-mknew}!libstring.c@{libstring.\-c}}
+\subsubsection[{string\-\_\-mknew}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-mknew (
+\begin{DoxyParamCaption}
+\item[{const {\bf string\-\_\-unit} $\ast$}]{in}
+\end{DoxyParamCaption}
+)}}\label{libstring_8c_ad8d3860e4259587644103dd264138e43}
+Duplicate a non-\/library string
+
+Use this function if you are concerned about reads before the string \hypertarget{libstring_8c_a8d899f4982b32b605b705f6e0599740a}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-new@{string\-\_\-new}}
 \index{string\-\_\-new@{string\-\_\-new}!libstring.c@{libstring.\-c}}
 \subsubsection[{string\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-new (
 \begin{DoxyParamCaption}
@@ -77,21 +100,6 @@ Create a new string
 
 \begin{DoxyReturn}{Returns}
 pointer to the new string 
-\end{DoxyReturn}
-\hypertarget{libstring_8c_a735702eafd2e58bac869b7a280f5b268}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-printf@{string\-\_\-printf}}
-\index{string\-\_\-printf@{string\-\_\-printf}!libstring.c@{libstring.\-c}}
-\subsubsection[{string\-\_\-printf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-printf (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fmt, }
-\item[{}]{...}
-\end{DoxyParamCaption}
-)}}\label{libstring_8c_a735702eafd2e58bac869b7a280f5b268}
-sprintf
-
-Give it exactly what you'd give printf
-
-\begin{DoxyReturn}{Returns}
-a pointer to a library-\/compatible string 
 \end{DoxyReturn}
 \hypertarget{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{\index{libstring.\-c@{libstring.\-c}!string\-\_\-realloc@{string\-\_\-realloc}}
 \index{string\-\_\-realloc@{string\-\_\-realloc}!libstring.c@{libstring.\-c}}
@@ -114,7 +122,7 @@ pointer to the new string
 \begin{DoxyParamCaption}
 \item[{{\bf string}}]{in}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}
+)}}\label{libstring_8c_aa60eeb5a0eeb51ae5836f067e332a97c}
 Declare a string as temporary, ie, that it will be freed right after use
 
 If the string is not library-\/compatible, nothing happens.
@@ -131,4 +139,4 @@ the pointer to the string
 Allocation sizes by default \par
  Each one is $\sim$double the previous one
 
-The 0 just means \char`\"{}\-Screw it\char`\"{} 
+The 0 just means allocate as much as needed, no extras 

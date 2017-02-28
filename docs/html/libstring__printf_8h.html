@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>libstring: Globals</title>
+<title>libstring: include/libstring_printf.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,19 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>Globals</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li><a href="globals.html"><span>All</span></a></li>
-      <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li class="current"><a href="globals_defs.html"><span>Macros</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -88,42 +78,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">libstring_printf.h File Reference</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;<ul>
-<li>_strlen
-: <a class="el" href="libstring_8h.html#a990396c8df1570b65738f484c5a67b7a">libstring.h</a>
-</li>
-<li>is_sr
-: <a class="el" href="libstring_8h.html#aada14177166a42820bf376ac0a4a16a5">libstring.h</a>
-</li>
-<li>SR_MAGIC_NUMBER
-: <a class="el" href="libstring_8h.html#a89cf6de7d0bdc9f360c7813f8979339e">libstring.h</a>
-</li>
-<li>sr_to_string
-: <a class="el" href="libstring_8h.html#abbe99f12f8f6519cde75ed7f21a3b2f2">libstring.h</a>
-</li>
-<li>string_append
-: <a class="el" href="libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0">libstring.h</a>
-</li>
-<li>string_free
-: <a class="el" href="libstring_8h.html#a127f2cd5454d5795a7a76f0120760b61">libstring.h</a>
-</li>
-<li>string_istemporary
-: <a class="el" href="libstring_8h.html#affda8fa39867a1db0f820339d802382d">libstring.h</a>
-</li>
-<li>string_length
-: <a class="el" href="libstring_8h.html#adcf00c98251679a3911ada75d158785a">libstring.h</a>
-</li>
-<li>string_new_size
-: <a class="el" href="libstring_8h.html#a0ef4d1ebdc1576f6d8b15ff923d317ad">libstring.h</a>
-</li>
-<li>string_to_sr
-: <a class="el" href="libstring_8h.html#a19b025d38c6475e913a6fd6e21390af2">libstring.h</a>
-</li>
-<li>string_unit
-: <a class="el" href="libstring_8h.html#a7f60ab0ef81ddb22d1ef751ed974eeda">libstring.h</a>
-</li>
-</ul>
+
+<p>Header file for libstring's printf extension.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="libstring_8h_source.html">libstring.h</a>&quot;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdarg.h&gt;</code><br/>
+</div>
+<p><a href="libstring__printf_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a735702eafd2e58bac869b7a280f5b268"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libstring__printf_8h.html#a735702eafd2e58bac869b7a280f5b268">string_printf</a> (const char *fmt,...)</td></tr>
+<tr class="separator:a735702eafd2e58bac869b7a280f5b268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header file for libstring's printf extension. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a735702eafd2e58bac869b7a280f5b268"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a> string_printf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>sprintf</p>
+<p>Give it exactly what you'd give printf</p>
+<dl class="section return"><dt>Returns</dt><dd>a pointer to a library-compatible string </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

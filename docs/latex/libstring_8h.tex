@@ -23,6 +23,8 @@ struct \hyperlink{struct__string__real}{\-\_\-string\-\_\-real}
 \item 
 \#define \hyperlink{libstring_8h_a7f60ab0ef81ddb22d1ef751ed974eeda}{string\-\_\-unit}~char
 \item 
+\#define \hyperlink{libstring_8h_a990396c8df1570b65738f484c5a67b7a}{\-\_\-strlen}(x)~strlen(x)
+\item 
 \#define \hyperlink{libstring_8h_a89cf6de7d0bdc9f360c7813f8979339e}{S\-R\-\_\-\-M\-A\-G\-I\-C\-\_\-\-N\-U\-M\-B\-E\-R}~1
 \item 
 \#define \hyperlink{libstring_8h_a19b025d38c6475e913a6fd6e21390af2}{string\-\_\-to\-\_\-sr}(x)~((\hyperlink{libstring_8h_a64ea07e8749ed647ff39561e84eb5895}{string\-\_\-real} $\ast$)((unsigned char $\ast$)x -\/ sizeof(\hyperlink{libstring_8h_a64ea07e8749ed647ff39561e84eb5895}{string\-\_\-real})))
@@ -31,13 +33,13 @@ struct \hyperlink{struct__string__real}{\-\_\-string\-\_\-real}
 \item 
 \#define \hyperlink{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{is\-\_\-sr}(x)~(((\hyperlink{libstring_8h_a64ea07e8749ed647ff39561e84eb5895}{string\-\_\-real} $\ast$)((unsigned char $\ast$)x -\/ sizeof(\hyperlink{libstring_8h_a64ea07e8749ed647ff39561e84eb5895}{string\-\_\-real})))-\/$>$flg == \hyperlink{libstring_8h_a89cf6de7d0bdc9f360c7813f8979339e}{S\-R\-\_\-\-M\-A\-G\-I\-C\-\_\-\-N\-U\-M\-B\-E\-R})
 \item 
-\#define \hyperlink{libstring_8h_adcf00c98251679a3911ada75d158785a}{string\-\_\-length}(x)~\hyperlink{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{is\-\_\-sr}(x) ? \hyperlink{libstring_8h_a19b025d38c6475e913a6fd6e21390af2}{string\-\_\-to\-\_\-sr}(x)-\/$>$len \-: strlen(x)
+\#define \hyperlink{libstring_8h_adcf00c98251679a3911ada75d158785a}{string\-\_\-length}(x)~\hyperlink{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{is\-\_\-sr}(x) ? \hyperlink{libstring_8h_a19b025d38c6475e913a6fd6e21390af2}{string\-\_\-to\-\_\-sr}(x)-\/$>$len \-: \hyperlink{libstring_8h_a990396c8df1570b65738f484c5a67b7a}{\-\_\-strlen}(x)
 \item 
 \#define \hyperlink{libstring_8h_a127f2cd5454d5795a7a76f0120760b61}{string\-\_\-free}(x)~free(\hyperlink{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{is\-\_\-sr}(x)?(void $\ast$)\hyperlink{libstring_8h_a19b025d38c6475e913a6fd6e21390af2}{string\-\_\-to\-\_\-sr}(x)\-:(void $\ast$)x)
 \item 
-\#define \hyperlink{libstring_8h_a934a85f5fdd0a5525b1b9ab838f06ff0}{string\-\_\-append}(a, b)~\hyperlink{libstring_8c_af800fb56ff534a5f5f0a6ce46e8dea8c}{string\-\_\-copy}(a, b, \hyperlink{libstring_8h_adcf00c98251679a3911ada75d158785a}{string\-\_\-length}(a), 0)
+\#define \hyperlink{libstring_8h_a934a85f5fdd0a5525b1b9ab838f06ff0}{string\-\_\-append}(a, b)~\hyperlink{libstring_8h_af800fb56ff534a5f5f0a6ce46e8dea8c}{string\-\_\-copy}(a, b, \hyperlink{libstring_8h_adcf00c98251679a3911ada75d158785a}{string\-\_\-length}(a), 0)
 \item 
-\#define \hyperlink{libstring_8h_a0ef4d1ebdc1576f6d8b15ff923d317ad}{string\-\_\-new\-\_\-size}(x)~\hyperlink{libstring_8c_a73531e043cd4a13eeee32886f0acbaae}{string\-\_\-realloc}(N\-U\-L\-L, x)
+\#define \hyperlink{libstring_8h_a0ef4d1ebdc1576f6d8b15ff923d317ad}{string\-\_\-new\-\_\-size}(x)~\hyperlink{libstring_8h_a73531e043cd4a13eeee32886f0acbaae}{string\-\_\-realloc}(N\-U\-L\-L, x)
 \item 
 \#define \hyperlink{libstring_8h_affda8fa39867a1db0f820339d802382d}{string\-\_\-istemporary}(x)~(\hyperlink{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{is\-\_\-sr}(x)?(\hyperlink{libstring_8h_a19b025d38c6475e913a6fd6e21390af2}{string\-\_\-to\-\_\-sr}(x)-\/$>$tmp == 1)\-:0)
 \end{DoxyCompactItemize}
@@ -59,9 +61,9 @@ typedef \hyperlink{libstring_8h_a7f60ab0ef81ddb22d1ef751ed974eeda}{string\-\_\-u
 \item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8h_a4b2487f7f12b4efc4cfe08fb8668f741}{string\-\_\-dup} (const \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} a)
 \item 
-\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8h_a735702eafd2e58bac869b7a280f5b268}{string\-\_\-printf} (const char $\ast$fmt,...)
-\item 
 \hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8h_aa60eeb5a0eeb51ae5836f067e332a97c}{string\-\_\-temporary} (\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} in)
+\item 
+\hyperlink{libstring_8h_ab3f420892d162c7136a94a36fb3706ec}{string} \hyperlink{libstring_8h_ad8d3860e4259587644103dd264138e43}{string\-\_\-mknew} (const \hyperlink{libstring_8h_a7f60ab0ef81ddb22d1ef751ed974eeda}{string\-\_\-unit} $\ast$in)
 \end{DoxyCompactItemize}
 
 
@@ -69,7 +71,14 @@ typedef \hyperlink{libstring_8h_a7f60ab0ef81ddb22d1ef751ed974eeda}{string\-\_\-u
 Header file for libstring. 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{\index{libstring.\-h@{libstring.\-h}!is\-\_\-sr@{is\-\_\-sr}}
+\hypertarget{libstring_8h_a990396c8df1570b65738f484c5a67b7a}{\index{libstring.\-h@{libstring.\-h}!\-\_\-strlen@{\-\_\-strlen}}
+\index{\-\_\-strlen@{\-\_\-strlen}!libstring.h@{libstring.\-h}}
+\subsubsection[{\-\_\-strlen}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-strlen(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~strlen(x)}}\label{libstring_8h_a990396c8df1570b65738f484c5a67b7a}
+Internal use strlen \hypertarget{libstring_8h_aada14177166a42820bf376ac0a4a16a5}{\index{libstring.\-h@{libstring.\-h}!is\-\_\-sr@{is\-\_\-sr}}
 \index{is\-\_\-sr@{is\-\_\-sr}!libstring.h@{libstring.\-h}}
 \subsubsection[{is\-\_\-sr}]{\setlength{\rightskip}{0pt plus 5cm}\#define is\-\_\-sr(
 \begin{DoxyParamCaption}
@@ -126,7 +135,7 @@ t/f
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~{\bf is\-\_\-sr}(x) ? {\bf string\-\_\-to\-\_\-sr}(x)-\/$>$len \-: strlen(x)}}\label{libstring_8h_adcf00c98251679a3911ada75d158785a}
+)~{\bf is\-\_\-sr}(x) ? {\bf string\-\_\-to\-\_\-sr}(x)-\/$>$len \-: {\bf \-\_\-strlen}(x)}}\label{libstring_8h_adcf00c98251679a3911ada75d158785a}
 Get the length of a string \hypertarget{libstring_8h_a0ef4d1ebdc1576f6d8b15ff923d317ad}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-new\-\_\-size@{string\-\_\-new\-\_\-size}}
 \index{string\-\_\-new\-\_\-size@{string\-\_\-new\-\_\-size}!libstring.h@{libstring.\-h}}
 \subsubsection[{string\-\_\-new\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}\#define string\-\_\-new\-\_\-size(
@@ -167,7 +176,7 @@ Most of the time, the user interacts only with the \char`\"{}string\char`\"{}. I
 
 The value of the string itself follows after this small header. That is the memory address returned by a function.
 
-I\-M\-P\-O\-R\-T\-A\-N\-T D\-I\-S\-A\-M\-B\-I\-B\-U\-A\-T\-I\-O\-N\-:
+I\-M\-P\-O\-R\-T\-A\-N\-T D\-I\-S\-A\-M\-B\-I\-G\-U\-A\-T\-I\-O\-N\-:
 
 
 \begin{DoxyItemize}
@@ -211,7 +220,16 @@ a string
 \begin{DoxyReturn}{Returns}
 the copy of the string (guaranteed to be library-\/compatible string) 
 \end{DoxyReturn}
-\hypertarget{libstring_8h_a8d899f4982b32b605b705f6e0599740a}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-new@{string\-\_\-new}}
+\hypertarget{libstring_8h_ad8d3860e4259587644103dd264138e43}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-mknew@{string\-\_\-mknew}}
+\index{string\-\_\-mknew@{string\-\_\-mknew}!libstring.h@{libstring.\-h}}
+\subsubsection[{string\-\_\-mknew}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-mknew (
+\begin{DoxyParamCaption}
+\item[{const {\bf string\-\_\-unit} $\ast$}]{in}
+\end{DoxyParamCaption}
+)}}\label{libstring_8h_ad8d3860e4259587644103dd264138e43}
+Duplicate a non-\/library string
+
+Use this function if you are concerned about reads before the string \hypertarget{libstring_8h_a8d899f4982b32b605b705f6e0599740a}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-new@{string\-\_\-new}}
 \index{string\-\_\-new@{string\-\_\-new}!libstring.h@{libstring.\-h}}
 \subsubsection[{string\-\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-new (
 \begin{DoxyParamCaption}
@@ -222,21 +240,6 @@ Create a new string
 
 \begin{DoxyReturn}{Returns}
 pointer to the new string 
-\end{DoxyReturn}
-\hypertarget{libstring_8h_a735702eafd2e58bac869b7a280f5b268}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-printf@{string\-\_\-printf}}
-\index{string\-\_\-printf@{string\-\_\-printf}!libstring.h@{libstring.\-h}}
-\subsubsection[{string\-\_\-printf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} string\-\_\-printf (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fmt, }
-\item[{}]{...}
-\end{DoxyParamCaption}
-)}}\label{libstring_8h_a735702eafd2e58bac869b7a280f5b268}
-sprintf
-
-Give it exactly what you'd give printf
-
-\begin{DoxyReturn}{Returns}
-a pointer to a library-\/compatible string 
 \end{DoxyReturn}
 \hypertarget{libstring_8h_a73531e043cd4a13eeee32886f0acbaae}{\index{libstring.\-h@{libstring.\-h}!string\-\_\-realloc@{string\-\_\-realloc}}
 \index{string\-\_\-realloc@{string\-\_\-realloc}!libstring.h@{libstring.\-h}}
@@ -259,7 +262,7 @@ pointer to the new string
 \begin{DoxyParamCaption}
 \item[{{\bf string}}]{in}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{libstring_8h_aa60eeb5a0eeb51ae5836f067e332a97c}
+)}}\label{libstring_8h_aa60eeb5a0eeb51ae5836f067e332a97c}
 Declare a string as temporary, ie, that it will be freed right after use
 
 If the string is not library-\/compatible, nothing happens.
