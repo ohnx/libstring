@@ -8,5 +8,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+string string_printf(const char *fmt, ...);
+
 #endif
 
