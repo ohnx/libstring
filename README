@@ -19,6 +19,12 @@
         so you don't have to! The only time when you need to manual
         memory manage is when you're done with a string.
 
+    GOALS
+        libstring tries to provide a simpler way to deal with strings
+        in C, so that a programmer can focus on other aspects of a
+        project. It aims to be lightweight (it only has ~5 real
+        functions) yet powerful. 
+
     LIBSTRING-STYLE STRINGS
         libstring-style strings can be treated as normal C-style
         strings. (ie, all C str* functions are compatible with
@@ -50,6 +56,9 @@
         Run `make docs` on systems with make and doxygen. This will
         generate the HTML and LaTeX documentation in the folder `docs/`
 
+    EXAMPLES
+        See the link: https://github.com/ohnx/libstring/wiki/EXAMPLES
+
     LICENSE
         MIT-licensed, see the LICENSE file.
 
@@ -57,3 +66,4 @@
         libstring's printf implementation relies on va_copy, which
         is not part of c89. Instead, it is available as an extension.
         To compile libstring with printf support, run `make printf`.
+        Keep in mind that the printf code compiles as c99.

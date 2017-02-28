@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "libstring.h"
+#include "libstring_printf.h"
 
 int main() {
     printf("In this version of libstring, header is %ld bytes.\n", sizeof(string_real));
