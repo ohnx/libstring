@@ -143,19 +143,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">string</span> <a class="code" href="libstring_8h.html#a4b2487f7f12b4efc4cfe08fb8668f741">string_dup</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> a);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">string</span> <a class="code" href="libstring_8h.html#aa60eeb5a0eeb51ae5836f067e332a97c">string_temporary</a>(<span class="keywordtype">string</span> in);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">string</span> <a class="code" href="libstring_8h.html#ad8d3860e4259587644103dd264138e43">string_mknew</a>(<span class="keyword">const</span> <a class="code" href="libstring_8h.html#a7f60ab0ef81ddb22d1ef751ed974eeda">string_unit</a> *in);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0">  121</a></span>&#160;<span class="preprocessor">#define string_append(a, b) string_copy(a, b, string_length(a), 0)</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="libstring_8h.html#a0ef4d1ebdc1576f6d8b15ff923d317ad">  128</a></span>&#160;<span class="preprocessor">#define string_new_size(x) string_realloc(NULL, x)</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="libstring_8h.html#affda8fa39867a1db0f820339d802382d">  135</a></span>&#160;<span class="preprocessor">#define string_istemporary(x) (is_sr(x)?(string_to_sr(x)-&gt;tmp == 1):0)</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">string</span> <a class="code" href="libstring_8h.html#a8e34957e9dbaa10121e21a896bb1ac84">string_appendv</a>(<span class="keywordtype">int</span> count, ...);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0">  122</a></span>&#160;<span class="preprocessor">#define string_append(a, b) string_copy(a, b, string_length(a), 0)</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="libstring_8h.html#a0ef4d1ebdc1576f6d8b15ff923d317ad">  129</a></span>&#160;<span class="preprocessor">#define string_new_size(x) string_realloc(NULL, x)</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="libstring_8h.html#affda8fa39867a1db0f820339d802382d">  136</a></span>&#160;<span class="preprocessor">#define string_istemporary(x) (is_sr(x)?(string_to_sr(x)-&gt;tmp == 1):0)</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="libstring_8h_html_ad8d3860e4259587644103dd264138e43"><div class="ttname"><a href="libstring_8h.html#ad8d3860e4259587644103dd264138e43">string_mknew</a></div><div class="ttdeci">string string_mknew(const string_unit *in)</div><div class="ttdef"><b>Definition:</b> libstring.c:208</div></div>
 <div class="ttc" id="libstring_8h_html_a4b2487f7f12b4efc4cfe08fb8668f741"><div class="ttname"><a href="libstring_8h.html#a4b2487f7f12b4efc4cfe08fb8668f741">string_dup</a></div><div class="ttdeci">string string_dup(const string a)</div><div class="ttdef"><b>Definition:</b> libstring.c:167</div></div>
 <div class="ttc" id="struct__string__real_html"><div class="ttname"><a href="struct__string__real.html">_string_real</a></div><div class="ttdef"><b>Definition:</b> libstring.h:58</div></div>
 <div class="ttc" id="libstring_8h_html_af800fb56ff534a5f5f0a6ce46e8dea8c"><div class="ttname"><a href="libstring_8h.html#af800fb56ff534a5f5f0a6ce46e8dea8c">string_copy</a></div><div class="ttdeci">string string_copy(string a, const string b, uint16_t offset, uint16_t num)</div><div class="ttdef"><b>Definition:</b> libstring.c:107</div></div>
 <div class="ttc" id="libstring_8h_html_a64ea07e8749ed647ff39561e84eb5895"><div class="ttname"><a href="libstring_8h.html#a64ea07e8749ed647ff39561e84eb5895">string_real</a></div><div class="ttdeci">struct _string_real string_real</div></div>
+<div class="ttc" id="libstring_8h_html_a8e34957e9dbaa10121e21a896bb1ac84"><div class="ttname"><a href="libstring_8h.html#a8e34957e9dbaa10121e21a896bb1ac84">string_appendv</a></div><div class="ttdeci">string string_appendv(int count,...)</div><div class="ttdef"><b>Definition:</b> libstring.c:228</div></div>
 <div class="ttc" id="struct__string__real_html_a0a2aeea98f557b0e98e15aa42414e855"><div class="ttname"><a href="struct__string__real.html#a0a2aeea98f557b0e98e15aa42414e855">_string_real::tot</a></div><div class="ttdeci">uint16_t tot</div><div class="ttdef"><b>Definition:</b> libstring.h:62</div></div>
 <div class="ttc" id="libstring_8h_html_a8d899f4982b32b605b705f6e0599740a"><div class="ttname"><a href="libstring_8h.html#a8d899f4982b32b605b705f6e0599740a">string_new</a></div><div class="ttdeci">string string_new()</div><div class="ttdef"><b>Definition:</b> libstring.c:31</div></div>
 <div class="ttc" id="libstring_8h_html_ab3f420892d162c7136a94a36fb3706ec"><div class="ttname"><a href="libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec">string</a></div><div class="ttdeci">string_unit * string</div><div class="ttdef"><b>Definition:</b> libstring.h:71</div></div>
@@ -168,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 28 2017 02:36:42 for libstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 2 2017 15:50:17 for libstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

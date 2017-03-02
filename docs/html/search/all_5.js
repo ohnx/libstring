@@ -4,6 +4,7 @@ var searchData=
   ['sr_5fto_5fstring',['sr_to_string',['../libstring_8h.html#abbe99f12f8f6519cde75ed7f21a3b2f2',1,'libstring.h']]],
   ['string',['string',['../libstring_8h.html#ab3f420892d162c7136a94a36fb3706ec',1,'libstring.h']]],
   ['string_5fappend',['string_append',['../libstring_8h.html#a934a85f5fdd0a5525b1b9ab838f06ff0',1,'libstring.h']]],
+  ['string_5fappendv',['string_appendv',['../libstring_8c.html#a8e34957e9dbaa10121e21a896bb1ac84',1,'string_appendv(int count,...):&#160;libstring.c'],['../libstring_8h.html#a8e34957e9dbaa10121e21a896bb1ac84',1,'string_appendv(int count,...):&#160;libstring.c']]],
   ['string_5fbavail',['string_bavail',['../libstring_8c.html#aa04e472d48457a1a4b64c19b7eaa8572',1,'libstring.c']]],
   ['string_5fcopy',['string_copy',['../libstring_8c.html#af800fb56ff534a5f5f0a6ce46e8dea8c',1,'string_copy(string a, const string b, uint16_t offset, uint16_t num):&#160;libstring.c'],['../libstring_8h.html#af800fb56ff534a5f5f0a6ce46e8dea8c',1,'string_copy(string a, const string b, uint16_t offset, uint16_t num):&#160;libstring.c']]],
   ['string_5fdup',['string_dup',['../libstring_8c.html#a4b2487f7f12b4efc4cfe08fb8668f741',1,'string_dup(const string a):&#160;libstring.c'],['../libstring_8h.html#a4b2487f7f12b4efc4cfe08fb8668f741',1,'string_dup(const string a):&#160;libstring.c']]],
