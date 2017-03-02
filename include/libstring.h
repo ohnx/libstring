@@ -109,6 +109,7 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num);
 string string_dup(const string a);
 string string_temporary(string in);
 string string_mknew(const string_unit *in);
+string string_appendv(int count, ...);
 
 /**
  * Append two strings (aka copy characters from b to the end of a)

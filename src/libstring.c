@@ -219,3 +219,24 @@ string string_mknew(const string_unit *in) {
 
     return ret;
 }
+
+/**
+ * Append a variable number of strings
+ * 
+ * @return pointer to the new string
+ */
+string string_appendv(int count, ...) {
+    va_list ap;
+    string s;
+    int i;
+
+    va_start(ap, count); /* init argument list */
+
+    s = string_new();
+
+    for (i = 0; i < count; i++)
+        s = string_append(s, va_arg(ap, string)); /* will autofree if it's temp */
+
+    va_end(ap);
+    return s;
+}
