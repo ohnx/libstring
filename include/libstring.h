@@ -93,33 +93,18 @@ typedef string_unit* string;
  */
 #define is_sr(x) (((string_real *)((unsigned char *)x - sizeof(string_real)))->flg == SR_MAGIC_NUMBER)
 
-/**
- * Get the length of a string
- */
-#define string_length(x) is_sr(x) ? string_to_sr(x)->len : _strlen(x)
-
-/**
- * Free a string
- */
-#define string_free(x) free(is_sr(x)?(void *)string_to_sr(x):(void *)x)
-
 string string_new();
 string string_realloc(string a, uint16_t minS);
+uint16_t string_length(string a);
+void string_free(string a);
 string string_copy(string a, const string b, uint16_t offset, uint16_t num);
+string string_append(string a, string b);
 string string_dup(const string a);
 string string_temporary(string in);
 string string_mknew(const string_unit *in);
 string string_appendv(int count, ...);
-
-/**
- * Append two strings (aka copy characters from b to the end of a)
- * 
- * a string #1
- * b string #2
- * 
- * @return the appended string a+b (guaranteed to be library-compatible string)
- */
-#define string_append(a, b) string_copy(a, b, string_length(a), 0)
+string string_appendnv(int count, ...);
+int string_istemporary(string a);
 
 /**
  * Create a new string with a minimum given size
@@ -127,12 +112,5 @@ string string_appendv(int count, ...);
  * @return pointer to the new string
  */
 #define string_new_size(x) string_realloc(NULL, x)
-
-/**
- * Check if a string is temporary or not
- * 
- * @return t/f
- */
-#define string_istemporary(x) (is_sr(x)?(string_to_sr(x)->tmp == 1):0)
 
 #endif

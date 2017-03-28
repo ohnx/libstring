@@ -93,6 +93,20 @@ escape:
 
 
 /**
+ * Get the length of a string
+ */
+uint16_t string_length(string a) {
+    return (is_sr(a) ? string_to_sr(a)->len : _strlen(a));
+}
+
+/**
+ * Free a string
+ */
+void string_free(string a) {
+    free(is_sr(a)?(void *)string_to_sr(a):(void *)a);
+}
+
+/**
  * Copy num characters from string B to A with offset offset.
  * 
  * <b>if num is 0, then all characters will be copied.</b>
@@ -155,6 +169,19 @@ string string_copy(string a, const string b, uint16_t offset, uint16_t num) {
     }
 
     return ret;
+}
+
+
+/**
+ * Append two strings (aka copy characters from b to the end of a)
+ * 
+ * a string #1
+ * b string #2
+ * 
+ * @return the appended string a+b (guaranteed to be library-compatible string)
+ */
+string string_append(string a, string b) {
+    return string_copy(a, b, string_length(a), 0);
 }
 
 /**
@@ -221,22 +248,57 @@ string string_mknew(const string_unit *in) {
 }
 
 /**
+ * (internal) Append a variable number of strings into a new string
+ */
+string string_appendva(int count, string base, va_list ap) {
+    while (count-- > 0)
+        base = string_append(base, va_arg(ap, string)); /* will autofree if it's temp */
+    return base;
+}
+
+/**
  * Append a variable number of strings
  * 
- * @return pointer to the new string
+ * @return pointer to the string
  */
 string string_appendv(int count, ...) {
     va_list ap;
     string s;
-    int i;
+
+    if (count < 1) return NULL;
 
     va_start(ap, count); /* init argument list */
-
-    s = string_new();
-
-    for (i = 0; i < count; i++)
-        s = string_append(s, va_arg(ap, string)); /* will autofree if it's temp */
-
+    s = va_arg(ap, string); /* already popped element off */
+    s = string_appendva(--count, s, ap);
     va_end(ap);
+    
     return s;
 }
+
+/**
+ * Append a variable number of strings into a new string
+ * 
+ * @return pointer to the new string
+ */
+string string_appendnv(int count, ...) {
+    va_list ap;
+    string s;
+
+    if (count < 1) return NULL;
+
+    va_start(ap, count); /* init argument list */
+    s = string_appendva(count, string_new(), ap);
+    va_end(ap);
+    
+    return s;
+}
+
+/**
+ * Check if a string is temporary or not
+ * 
+ * @return t/f
+ */
+int string_istemporary(string a) {
+    return (is_sr(a)?(string_to_sr(a)->tmp == 1):0);
+}
+

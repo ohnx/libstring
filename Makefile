@@ -1,6 +1,6 @@
 .PHONY: all
 all: src/libstring.c
-	$(CC) -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -pedantic -ansi
+	$(CC) -c src/libstring.c -o libstring.o -Iinclude/ -Wall -Werror -pedantic -ansi -g
 	ar rcs libstring.a libstring.o
 
 .PHONY: printf
@@ -19,7 +19,7 @@ clean:
 
 .PHONY: test
 test: tests/runner.c printf
-	@$(CC) -c tests/runner.c -o tests/runner.o -Iinclude/ -Wall -Werror
+	@$(CC) -c tests/runner.c -o tests/runner.o -Iinclude/ -Wall -Werror -g
 	@$(CC) tests/runner.o -L. -lstring -o tests/runner
 	@echo "Running test..."
 	@tests/runner

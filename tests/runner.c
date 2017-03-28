@@ -34,7 +34,7 @@ int main() {
     string autofree_test = string_append("My numbers are ", string_temporary(string_printf("%d, %d, and %d.\n", 10, 30, 21)));
     printf("printf and autofree test:\n%s", autofree_test);
 
-    string multia_test = string_appendv(6, "The", " quick", " brown", " fox", "\n", string_temporary(autofree_test));
+    string multia_test = string_appendnv(6, "The", " quick", " brown", " fox", "\n", string_temporary(autofree_test));
     printf("multi-argument append test:\n%s", multia_test);
 
     string_free(myString);
